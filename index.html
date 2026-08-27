@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MICHAL FLOWER | עיצובי פרחים ומתנות</title>
+<meta name="description" content="MICHAL FLOWER — זרי פרחים חיים ומלאכותיים, מתנות מעוצבות, אירועים וסידורים בהתאמה אישית.">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap');
+:root{--black:#0f1110;--black2:#171918;--cream:#f7f1eb;--pink:#d79da4;--gold:#c9a56b;--gold2:#ead19b;--white:#fffdfa;--muted:#a9a29c;--line:rgba(201,165,107,.27)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--black);color:#fff;font-family:Assistant,Arial,sans-serif}
+a{text-decoration:none;color:inherit}.wrap{width:min(1200px,92%);margin:auto}
+.announcement{background:var(--pink);color:#211d1b;text-align:center;padding:9px 15px;font-size:13px;letter-spacing:.5px}
+header{position:absolute;top:42px;left:0;right:0;z-index:20;padding:20px 0}.nav{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:25px}.logo{width:145px;display:block;filter:drop-shadow(0 5px 14px rgba(0,0,0,.35))}
+.links{display:flex;gap:28px;font-size:14px;color:#eee}.links a{opacity:.86;transition:.25s}.links a:hover{color:var(--gold2);opacity:1}
+.social{display:flex;gap:12px;align-items:center}.social a{width:38px;height:38px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;color:var(--gold2);font-size:18px}
+.hero{height:760px;position:relative;overflow:hidden;background:var(--black)}
+.slide{position:absolute;inset:0;opacity:0;transition:opacity 1.2s ease;background-position:center;background-size:cover}
+.slide.active{opacity:1}.slide:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,11,10,.88) 0%,rgba(10,11,10,.55) 45%,rgba(10,11,10,.18) 100%),linear-gradient(0deg,rgba(10,11,10,.75),transparent 45%)}
+.hero-content{position:relative;z-index:4;height:100%;display:flex;align-items:center}.hero-copy{max-width:610px;padding-top:85px;animation:rise .9s ease both}.eyebrow{color:var(--gold2);letter-spacing:4px;font-size:12px;margin-bottom:16px}
+h1{font-family:"Playfair Display",serif;font-size:clamp(48px,6.5vw,82px);font-weight:400;line-height:1.03;margin:0 0 25px}.hero h1 span{color:var(--gold2)}.hero p{font-size:19px;line-height:1.8;color:#eee;max-width:570px}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}.btn{background:var(--gold);color:#171411;padding:14px 28px;border-radius:28px;font-weight:600;display:inline-flex;align-items:center;justify-content:center;min-width:175px;transition:.25s}.btn:hover{transform:translateY(-3px);box-shadow:0 12px 25px rgba(201,165,107,.22)}.btn.alt{background:transparent;border:1px solid rgba(255,255,255,.5);color:white}
+.slider-controls{position:absolute;z-index:5;inset:0;display:flex;align-items:center;justify-content:space-between;padding:0 24px;pointer-events:none}.arrow{pointer-events:auto;width:48px;height:48px;border:1px solid rgba(255,255,255,.45);border-radius:50%;display:grid;place-items:center;font-size:26px;cursor:pointer;background:rgba(0,0,0,.18)}
+.dots{position:absolute;z-index:6;bottom:35px;left:0;right:0;display:flex;justify-content:center;gap:10px}.dot{width:9px;height:9px;border-radius:50%;background:#ddd;opacity:.65;cursor:pointer}.dot.active{background:var(--gold2);opacity:1;transform:scale(1.25)}
+.section{padding:90px 0}.cream{background:var(--cream);color:var(--black)}.heading{text-align:center;max-width:720px;margin:0 auto 45px}.heading .eyebrow{color:var(--gold)}h2{font-family:"Playfair Display",serif;font-size:48px;font-weight:400;line-height:1.15;margin:0 0 13px}.heading p{color:#756e68;font-size:18px;margin:0;line-height:1.7}
+.categories{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}.cat{position:relative;overflow:hidden;border-radius:18px;min-height:290px;border:1px solid #d9cfc6;background:#ddd;cursor:pointer;transition:.35s}.cat:hover{transform:translateY(-7px)}.cat img{width:100%;height:100%;position:absolute;inset:0;object-fit:cover;transition:.5s}.cat:hover img{transform:scale(1.07)}.cat:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(15,17,16,.9),rgba(15,17,16,.02) 68%)}.cat-title{position:absolute;z-index:2;bottom:19px;right:15px;left:15px;text-align:center;color:#fff;font-size:17px;font-weight:500}.cat-icon{display:block;color:var(--gold2);font-size:23px;margin-bottom:5px}
+.benefits{background:var(--black2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:42px 0}.benefit-grid{display:grid;grid-template-columns:repeat(4,1fr)}.benefit{text-align:center;padding:5px 25px;border-left:1px solid rgba(201,165,107,.2)}.benefit:last-child{border-left:0}.benefit .ico{font-size:28px;color:var(--gold);margin-bottom:7px}.benefit h3{font-size:19px;font-weight:500;margin:0 0 4px;color:var(--gold2)}.benefit p{margin:0;color:#b9b1aa;font-size:14px}
+.story{display:grid;grid-template-columns:1fr 1fr;min-height:610px}.story-img{background:url('pink-basket.jpg') center/cover no-repeat}.story-copy{padding:75px;display:flex;align-items:center;background:#121514}.story-copy p{font-size:18px;line-height:1.95;color:#d1cbc5}.signature{font-family:"Playfair Display",serif;color:var(--gold2);font-size:27px;margin-top:22px}
+.portfolio{background:var(--cream);color:var(--black)}.mosaic{display:grid;grid-template-columns:1.1fr .9fr .9fr;grid-auto-rows:250px;gap:12px}.mosaic figure{margin:0;overflow:hidden;border-radius:15px}.mosaic .big{grid-row:span 2}.mosaic img{width:100%;height:100%;object-fit:cover;transition:.5s}.mosaic figure:hover img{transform:scale(1.05)}
+.cta{background:linear-gradient(90deg,#e6c0c2,#f2d7d5);color:#171412;padding:65px 0}.cta-inner{display:flex;align-items:center;justify-content:space-between;gap:30px}.cta h2{font-family:"Playfair Display",serif;margin:0;font-size:45px}.cta p{margin:8px 0 0;font-size:18px}.cta .btn{background:var(--black);color:#fff}
+footer{padding:45px 0 25px;text-align:center;background:#0b0d0c;color:#a9a29c}.footer-logo{width:120px;margin:0 auto 15px;display:block}.footer-social{display:flex;justify-content:center;gap:12px;margin-bottom:20px}.footer-social a{color:var(--gold2);font-size:20px}.copy{font-size:12px}
+@keyframes rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+@media(max-width:950px){.categories{grid-template-columns:repeat(3,1fr)}.nav{grid-template-columns:1fr auto}.social{display:none}.links{display:none}.logo{width:125px}.hero{height:700px}.story{grid-template-columns:1fr}.story-img{min-height:420px}.benefit-grid{grid-template-columns:repeat(2,1fr);gap:25px}.benefit:nth-child(2){border-left:0}}
+@media(max-width:600px){.categories{grid-template-columns:repeat(2,1fr)}.cat{min-height:230px}.hero{height:680px}.hero-copy{padding-top:120px}.hero h1{font-size:49px}.hero p{font-size:16px}.slider-controls{padding:0 10px}.arrow{width:40px;height:40px}.section{padding:65px 0}h2{font-size:39px}.mosaic{grid-template-columns:1fr 1fr;grid-auto-rows:180px}.mosaic .big{grid-row:span 2}.cta-inner{flex-direction:column;text-align:center}.cta h2{font-size:39px}.story-copy{padding:50px 25px}}
+</style>
+</head>
+<body>
+<div class="announcement">♡ משלוחים באזור ירושלים והסביבה · עיצובי פרחים יוקרתיים בהתאמה אישית</div>
+
+<header>
+  <div class="wrap nav">
+    <nav class="links">
+      <a href="#home">דף הבית</a><a href="#categories">קטלוג</a><a href="#story">אודות</a><a href="#contact">צור קשר</a>
+    </nav>
+    <a href="#home"><img class="logo" src="logo.png" alt="MICHAL FLOWER"></a>
+    <div class="social"><a href="#contact" aria-label="WhatsApp">◔</a><a href="#gallery" aria-label="Instagram">◎</a></div>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="home">
+  <div class="slide active" style="background-image:url('pink-basket.jpg')"></div>
+  <div class="slide" style="background-image:url('floral-closeup.jpg')"></div>
+  <div class="slide" style="background-image:url('gift-basket.jpg')"></div>
+  <div class="slide" style="background-image:url('baby-basket.jpg')"></div>
+  <div class="slide" style="background-image:url('collage.jpg')"></div>
+  <div class="wrap hero-content">
+    <div class="hero-copy">
+      <div class="eyebrow">MICHAL FLOWER</div>
+      <h1>פרחים שהופכים<br><span>רגעים לבלתי נשכחים.</span></h1>
+      <p>עיצובים ייחודיים בהתאמה אישית לרגעים המיוחדים של החיים — מפרח אחד ועד מתנה שלמה.</p>
+      <div class="actions"><a class="btn" href="#contact">ליצירת קשר בוואטסאפ</a><a class="btn alt" href="#categories">לצפייה בקטלוג</a></div>
+    </div>
+  </div>
+  <div class="slider-controls"><button class="arrow" id="prev">‹</button><button class="arrow" id="next">›</button></div>
+  <div class="dots" id="dots"></div>
+</section>
+
+<section class="section cream" id="categories">
+ <div class="wrap">
+  <div class="heading"><div class="eyebrow">CHOOSE YOUR MOMENT</div><h2>מה חשוב לך לחגוג?</h2><p>בחרו את הרגע שלכם ואני אדאג להפוך אותו למתנה שתישאר בזיכרון.</p></div>
+  <div class="categories">
+   <a class="cat" href="#gallery"><img src="floral-closeup.jpg" alt="זר פרחים חי"><div class="cat-title"><span class="cat-icon">✿</span>זר פרחים חי</div></a>
+   <a class="cat" href="#gallery"><img src="floral-basket.jpg" alt="זר פרחים מלאכותי"><div class="cat-title"><span class="cat-icon">❋</span>זר פרחים מלאכותי</div></a>
+   <a class="cat" href="#gallery"><img src="collage.jpg" alt="חתונה ואירוסין"><div class="cat-title"><span class="cat-icon">♧</span>חתונה ואירוסין</div></a>
+   <a class="cat" href="#gallery"><img src="gift-basket.jpg" alt="מתנות מעוצבות"><div class="cat-title"><span class="cat-icon">♧</span>מתנות מעוצבות</div></a>
+   <a class="cat" href="#gallery"><img src="baby-basket.jpg" alt="ברית ולידה"><div class="cat-title"><span class="cat-icon">♡</span>ברית ולידה</div></a>
+   <a class="cat" href="#gallery"><img src="pink-basket.jpg" alt="יום הולדת"><div class="cat-title"><span class="cat-icon">✦</span>יום הולדת</div></a>
+  </div>
+ </div>
+</section>
+
+<section class="benefits">
+ <div class="wrap benefit-grid">
+  <div class="benefit"><div class="ico">♡</div><h3>שירות אישי</h3><p>ליווי צמוד והתאמה אישית עד לפרט האחרון</p></div>
+  <div class="benefit"><div class="ico">♧</div><h3>עיצוב יוקרתי</h3><p>סגנון אלגנטי וייחודי לכל מתנה</p></div>
+  <div class="benefit"><div class="ico">◇</div><h3>איכות ללא פשרות</h3><p>פרחים טריים וחומרי גלם שנבחרו בקפידה</p></div>
+  <div class="benefit"><div class="ico">⌖</div><h3>ירושלים והסביבה</h3><p>משלוחים בתיאום ובאהבה</p></div>
+ </div>
+</section>
+
+<section class="story" id="story">
+ <div class="story-img"></div>
+ <div class="story-copy"><div><div class="eyebrow">ABOUT MICHAL</div><h2>כל עיצוב — סיפור של אהבה</h2><p>אני מאמינה שכל זר פרחים הוא הרבה יותר ממתנה. הוא רגש, מחשבה והשקעה בפרטים הקטנים.</p><p>כל עיצוב נבנה באהבה, ברגישות ובדיוק בשביל האדם והאירוע שלכם.</p><div class="signature">Michal Flower</div></div></div>
+</section>
+
+<section class="section portfolio" id="gallery">
+ <div class="wrap">
+  <div class="heading"><div class="eyebrow">SELECTED DESIGNS</div><h2>העיצובים שלי</h2><p>כמה מהעיצובים שנוצרו במיוחד עבור לקוחות.</p></div>
+  <div class="mosaic">
+   <figure class="big"><img src="pink-basket.jpg" alt="סידור פרחים ורוד"></figure>
+   <figure><img src="gift-basket.jpg" alt="מתנה מעוצבת"></figure>
+   <figure><img src="baby-basket.jpg" alt="מתנה ללידה"></figure>
+   <figure><img src="floral-basket.jpg" alt="סידור פרחים"></figure>
+   <figure><img src="floral-closeup.jpg" alt="פרחים ורודים"></figure>
+  </div>
+ </div>
+</section>
+
+<section class="cta" id="contact">
+ <div class="wrap cta-inner"><div><h2>רוצה להפתיע מישהו בלי נשכח?</h2><p>ספרי לי למי, לאיזה אירוע ומה הסגנון — ואני אדאג לשאר.</p></div><a class="btn" href="https://wa.me/972500000000">דברי איתי בוואטסאפ</a></div>
+</section>
+</main>
+
+<footer>
+ <img class="footer-logo" src="logo.png" alt="MICHAL FLOWER">
+ <div class="footer-social"><a href="#contact">WhatsApp</a><span>·</span><a href="#gallery">Instagram</a></div>
+ <div class="copy">© MICHAL FLOWER · פרחים ועיצוב אישי</div>
+</footer>
+
+<script>
+const slides=[...document.querySelectorAll('.slide')], dots=document.getElementById('dots');
+let index=0,timer;
+slides.forEach((_,i)=>{const d=document.createElement('span');d.className='dot'+(i===0?' active':'');d.onclick=()=>go(i);dots.appendChild(d)});
+const dotEls=[...dots.children];
+function go(i){index=(i+slides.length)%slides.length;slides.forEach((s,n)=>s.classList.toggle('active',n===index));dotEls.forEach((d,n)=>d.classList.toggle('active',n===index));clearInterval(timer);timer=setInterval(()=>go(index+1),5000)}
+document.getElementById('next').onclick=()=>go(index+1);
+document.getElementById('prev').onclick=()=>go(index-1);
+timer=setInterval(()=>go(index+1),5000);
+</script>
+</body>
+</html>
