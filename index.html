@@ -130,6 +130,18 @@ h1 strong{font-weight:600;color:var(--pink-dark)}
 .cat-icon{font-size:31px;margin-bottom:18px;position:relative}
 .category h3{margin:0;font-size:22px;font-weight:500;position:relative}
 .category span{color:var(--muted);margin-top:5px;position:relative}
+.category{cursor:pointer;text-decoration:none;color:inherit}
+
+/* CATEGORY PHOTO MODAL */
+.photo-modal{position:fixed;inset:0;background:rgba(25,18,15,.78);display:none;align-items:center;justify-content:center;padding:24px;z-index:9999;backdrop-filter:blur(7px)}
+.photo-modal.open{display:flex}
+.photo-modal-inner{width:min(980px,96vw);max-height:90vh;background:#fffaf7;border:1px solid #d9cec3;border-radius:24px;padding:22px;position:relative;box-shadow:0 30px 90px rgba(0,0,0,.35);overflow:auto}
+.photo-modal-head{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:16px;direction:rtl}
+.photo-modal-head h3{margin:0;font-size:28px;font-weight:500;color:#2b2724}
+.photo-close{border:0;background:#f3ebe5;width:42px;height:42px;border-radius:50%;font-size:24px;cursor:pointer;color:#2b2724}
+.photo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.photo-grid img{width:100%;height:260px;object-fit:cover;border-radius:16px;display:block;cursor:zoom-in}
+@media(max-width:700px){.photo-grid{grid-template-columns:1fr 1fr}.photo-grid img{height:210px}.photo-modal-inner{padding:16px}}
 
 /* GALLERY */
 .gallery{background:var(--cream)}
@@ -263,17 +275,27 @@ footer{padding:30px 0;text-align:center;border-top:1px solid #d8ccc1;color:var(-
     </div>
 
     <div class="category-grid">
-      <a class="category reveal" href="#contact"><div class="cat-icon">💍</div><h3>חתונה</h3><span>עיצובי פרחים לאירוע המיוחד</span></a>
-      <a class="category reveal" href="#contact"><div class="cat-icon">🌷</div><h3>זרי פרחים חיים</h3><span>זרים רעננים בעיצוב אישי</span></a>
-      <a class="category reveal" href="#contact"><div class="cat-icon">🌸</div><h3>פרחים מלאכותיים</h3><span>יופי שנשאר לאורך זמן</span></a>
-      <a class="category reveal" href="#contact"><div class="cat-icon">🎁</div><h3>מתנות מעוצבות</h3><span>פרחים, פינוקים והפתעות</span></a>
-      <a class="category reveal" href="#contact"><div class="cat-icon">🎂</div><h3>יום הולדת</h3><span>להפוך את היום למרגש יותר</span></a>
-      <a class="category reveal" href="#contact"><div class="cat-icon">👶</div><h3>ברית / לידה</h3><span>מתנות מתוקות ומרגשות</span></a>
-      <a class="category reveal" href="#contact"><div class="cat-icon">🧺</div><h3>סלסלות פרחים</h3><span>סידורים עשירים ומרשימים</span></a>
-      <a class="category reveal" href="#contact"><div class="cat-icon">✨</div><h3>עיצוב בהתאמה אישית</h3><span>יש לך רעיון? ניצור אותו יחד</span></a>
+      <a class="category reveal" href="#" data-gallery="wedding"><div class="cat-icon">💍</div><h3>חתונה</h3><span>עיצובי פרחים לאירוע המיוחד</span></a>
+      <a class="category reveal" href="#" data-gallery="fresh"><div class="cat-icon">🌷</div><h3>זרי פרחים חיים</h3><span>זרים רעננים בעיצוב אישי</span></a>
+      <a class="category reveal" href="#" data-gallery="artificial"><div class="cat-icon">🌸</div><h3>פרחים מלאכותיים</h3><span>יופי שנשאר לאורך זמן</span></a>
+      <a class="category reveal" href="#" data-gallery="gifts"><div class="cat-icon">🎁</div><h3>מתנות מעוצבות</h3><span>פרחים, פינוקים והפתעות</span></a>
+      <a class="category reveal" href="#" data-gallery="birthday"><div class="cat-icon">🎂</div><h3>יום הולדת</h3><span>להפוך את היום למרגש יותר</span></a>
+      <a class="category reveal" href="#" data-gallery="baby"><div class="cat-icon">👶</div><h3>ברית / לידה</h3><span>מתנות מתוקות ומרגשות</span></a>
+      <a class="category reveal" href="#" data-gallery="baskets"><div class="cat-icon">🧺</div><h3>סלסלות פרחים</h3><span>סידורים עשירים ומרשימים</span></a>
+      <a class="category reveal" href="#" data-gallery="custom"><div class="cat-icon">✨</div><h3>עיצוב בהתאמה אישית</h3><span>יש לך רעיון? ניצור אותו יחד</span></a>
     </div>
   </div>
 </section>
+
+<div class="photo-modal" id="photoModal" aria-hidden="true">
+  <div class="photo-modal-inner" role="dialog" aria-modal="true" aria-labelledby="photoModalTitle">
+    <div class="photo-modal-head">
+      <h3 id="photoModalTitle">העיצובים שלי</h3>
+      <button class="photo-close" id="photoClose" aria-label="סגירה">×</button>
+    </div>
+    <div class="photo-grid" id="photoGrid"></div>
+  </div>
+</div>
 
 <section class="section gallery" id="gallery">
   <div class="container">
@@ -362,6 +384,74 @@ const observer = new IntersectionObserver((entries) => {
   });
 },{threshold:.12});
 document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+
+const categoryGalleries = {
+  wedding: { title: "חתונה", folder: "wedding" },
+  fresh: { title: "זרי פרחים חיים", folder: "fresh" },
+  artificial: { title: "פרחים מלאכותיים", folder: "artificial" },
+  gifts: { title: "מתנות מעוצבות", folder: "gifts" },
+  birthday: { title: "יום הולדת", folder: "birthday" },
+  baby: { title: "ברית / לידה", folder: "baby" },
+  baskets: { title: "סלסלות פרחים", folder: "baskets" },
+  custom: { title: "עיצוב בהתאמה אישית", folder: "custom" }
+};
+
+// התמונות נטענות אוטומטית מהתיקיות ב-GitHub.
+// מעכשיו אפשר פשוט להעלות תמונות לתיקייה המתאימה — בלי לשנות את הקוד.
+const GITHUB_API_BASE = "https://api.github.com/repos/tehila2258-gif/michal-flower/contents/images";
+
+async function getCategoryImages(folder){
+  try{
+    const response = await fetch(`${GITHUB_API_BASE}/${folder}?ts=${Date.now()}`, {
+      headers: { "Accept": "application/vnd.github+json" }
+    });
+    if(!response.ok) throw new Error("Folder not found");
+    const files = await response.json();
+    return files
+      .filter(file => file.type === "file" && /\.(jpg|jpeg|png|webp|gif)$/i.test(file.name))
+      .map(file => file.download_url);
+  }catch(error){
+    console.warn(`לא נמצאו תמונות בקטגוריה ${folder}`, error);
+    return [];
+  }
+}
+
+const photoModal = document.getElementById("photoModal");
+const photoGrid = document.getElementById("photoGrid");
+const photoModalTitle = document.getElementById("photoModalTitle");
+const photoClose = document.getElementById("photoClose");
+
+async function openCategoryGallery(key){
+  const gallery = categoryGalleries[key];
+  if(!gallery) return;
+  photoModalTitle.textContent = gallery.title;
+  photoGrid.innerHTML = `<p style="grid-column:1/-1;text-align:center;color:#6d6861;padding:35px">טוענת תמונות…</p>`;
+  photoModal.classList.add("open");
+  photoModal.setAttribute("aria-hidden","false");
+  document.body.style.overflow = "hidden";
+
+  const images = await getCategoryImages(gallery.folder);
+  if(!images.length){
+    photoGrid.innerHTML = `<p style="grid-column:1/-1;text-align:center;color:#6d6861;padding:35px">עדיין לא הועלו תמונות לקטגוריה הזו.</p>`;
+    return;
+  }
+  photoGrid.innerHTML = images.map(src => `<img src="${src}" alt="${gallery.title}" loading="lazy">`).join("");
+}
+function closeCategoryGallery(){
+  photoModal.classList.remove("open");
+  photoModal.setAttribute("aria-hidden","true");
+  document.body.style.overflow = "";
+}
+
+document.querySelectorAll("[data-gallery]").forEach(card => {
+  card.addEventListener("click", e => {
+    e.preventDefault();
+    openCategoryGallery(card.dataset.gallery);
+  });
+});
+photoClose.addEventListener("click", closeCategoryGallery);
+photoModal.addEventListener("click", e => { if(e.target === photoModal) closeCategoryGallery(); });
+document.addEventListener("keydown", e => { if(e.key === "Escape") closeCategoryGallery(); });
 </script>
 </body>
 </html>
